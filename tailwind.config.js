@@ -12,7 +12,7 @@ export default {
     },
     screens: {
       'tablet': '768px',
-      'desktop': '1440px',
+      'desktop': '1145px',
     },
     colors: {
       'soft-orange': 'hsl(35, 77%, 62%)',

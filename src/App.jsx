@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import Header from './components/Header';
+import { useEffect, useState } from "react";
+import Header from "./components/Header";
 
 function App() {
   const [pageData, setPageData] = useState(null);
 
   async function getPageContent() {
     try {
-      const response = await fetch('/api/page');
+      const response = await fetch("/api/page");
       const data = await response.json();
 
       if (response.ok) {
@@ -24,7 +24,14 @@ function App() {
 
   return (
     <>
-    {pageData ? <><Header data={pageData.navigation} /></> : 'Loading...'}
+      {pageData ? (
+        <>
+          <Header data={pageData.navigation} />
+          <main></main>
+        </>
+      ) : (
+        "Loading..."
+      )}
     </>
   );
 }
