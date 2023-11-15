@@ -1,8 +1,8 @@
-import LogoImg from '../assets/images/logo.svg';
-import IconClosed from '../assets/images/icon-menu-close.svg';
-import IconOpen from '../assets/images/icon-menu.svg';
-import { useLayoutEffect, useRef } from 'react';
-import gsap from 'gsap';
+import LogoImg from "../assets/images/logo.svg";
+import IconClosed from "../assets/images/icon-menu-close.svg";
+import IconOpen from "../assets/images/icon-menu.svg";
+import { useRef } from "react";
+import gsap from "gsap";
 
 export default function Navigation(props) {
   const isOpen = useRef(false);
@@ -13,58 +13,65 @@ export default function Navigation(props) {
 
   const navListItems = props.data.links.map((link, index) => (
     <li key={index}>
-      <a href={link.href} className="hover:underline">
+      <a
+        href={link.href}
+        className="transition-colors hover:text-soft-red"
+        onClick={closeMenu}
+      >
         {link.label}
       </a>
     </li>
   ));
 
-  function handleBtnClick() {
-    isOpen.current = !isOpen.current;
+  function closeMenu() {
+    isOpen.current = false;
+    navList.current.classList.add("translate-x-full");
+    imgOpen.current.classList.remove("scale-0");
+    imgClosed.current.classList.add("scale-0");
+  }
 
-    if (!isOpen.current) {
-      navList.current.classList.add('translate-x-full');
-      imgOpen.current.classList.remove('scale-0');
-      imgClosed.current.classList.add('scale-0');
-      gsap.to('li', { xPercent: 100, opacity: 0 });
+  function openMenu() {
+    isOpen.current = true;
+    navList.current.classList.remove("translate-x-full");
+    imgOpen.current.classList.add("scale-0");
+    imgClosed.current.classList.remove("scale-0");
+    gsap.from("li", { xPercent: 100, opacity: 0, stagger: 0.1 });
+  }
+
+  function handleBtnClick() {
+    if (isOpen.current) {
+      closeMenu();
     } else {
-      navList.current.classList.remove('translate-x-full');
-      imgOpen.current.classList.add('scale-0');
-      imgClosed.current.classList.remove('scale-0');
-      gsap.to('li', { xPercent: 0, opacity: 1, stagger: 0.1 });
+      openMenu();
     }
   }
 
-  useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      gsap.to('li', { xPercent: 100, opacity: 0 });
-    }, navElement);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <nav ref={navElement}>
+    <nav ref={navElement} className="items-center justify-between tablet:flex">
       <a href="#">
-        <img src={LogoImg} alt="" className="w-[2.875rem]" />
+        <img
+          src={LogoImg}
+          alt=""
+          className="w-[2.875rem] tablet:w-[4.0625rem]"
+        />
       </a>
       <ul
-        className="fixed h-full w-full bg-linen max-w-[16.0625rem] right-0 top-0 px-6 text-lg pt-[8.875rem] space-y-5 translate-x-full transition-transform"
+        className="fixed right-0 top-0 h-full w-full max-w-[16.0625rem] translate-x-full space-y-5 bg-linen px-6 pt-[8.875rem] text-lg text-very-dark-blue transition-transform tablet:static tablet:flex tablet:w-auto tablet:max-w-none tablet:translate-x-0 tablet:gap-[2.4375rem] tablet:space-y-0 tablet:px-0 tablet:pt-0 tablet:text-base tablet:text-dark-grayish-blue"
         ref={navList}
       >
         {navListItems}
       </ul>
-      <button onClick={handleBtnClick}>
+      <button onClick={handleBtnClick} className="tablet:hidden">
         <img
           src={IconClosed}
           alt=""
-          className="fixed top-7 right-5 scale-0 transition-transform"
+          className="fixed right-5 top-7 scale-0 transition-transform"
           ref={imgClosed}
         />
         <img
           src={IconOpen}
           alt=""
-          className="fixed top-[2.125rem] right-4 transition-transform"
+          className="fixed right-4 top-[2.125rem] transition-transform"
           ref={imgOpen}
         />
       </button>
