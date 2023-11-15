@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
+import Hero from "./components/Hero";
 
 function App() {
   const [pageData, setPageData] = useState(null);
@@ -27,7 +28,9 @@ function App() {
       {pageData ? (
         <>
           <Header data={pageData.navigation} />
-          <main></main>
+          <main className="mx-auto px-4 desktop:container">
+            <Hero data={pageData.hero}/>
+          </main>
         </>
       ) : (
         "Loading..."
