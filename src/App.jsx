@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Loader from "./components/Loader";
+import Footer from "./components/Footer";
 
 function App() {
   const [pageData, setPageData] = useState(null);
@@ -37,6 +38,7 @@ function App() {
           <main className="mx-auto px-4 desktop:container">
             <Hero data={pageData.hero} />
           </main>
+          <Footer />
         </>
       ) : (
         <Loader setLoadedState={setLoaded} data={pageData} />
