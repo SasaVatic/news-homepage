@@ -7,7 +7,12 @@ export default function Header(props) {
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      gsap.from(headerEl.current, { xPercent: 100, opacity: 0, duration: 0.5 });
+      gsap.from(headerEl.current, {
+        yPercent: -100,
+        opacity: 0,
+        duration: 0.5,
+        clearProps: "all",
+      });
     }, headerEl);
 
     return () => ctx.revert();
@@ -15,7 +20,7 @@ export default function Header(props) {
 
   return (
     <header
-      className="mx-auto px-4 pt-7 desktop:container tablet:pt-[3.6875rem] desktop:pt-[5.5625rem]"
+      className="mx-auto overflow-hidden px-4 pt-7 desktop:container tablet:pt-[3.6875rem] desktop:pt-[5.5625rem]"
       ref={headerEl}
     >
       <Navigation data={props.data} />
