@@ -1,11 +1,23 @@
 import HeroImgSmall from "../assets/images/image-web-3-mobile.jpg";
 import HeroImgLarge from "../assets/images/image-web-3-desktop.jpg";
 import Aside from "./Aside";
+import Card from "./Card";
 
 export default function Hero(props) {
   const data = props.data;
+
+  const cards = data.cards.map((card, index) => (
+    <Card
+      imgURL={card.imgURL}
+      title={card.title}
+      text={card.text}
+      number={index + 1}
+      key={index}
+    />
+  ));
+
   return (
-    <section className="pt-2">
+    <section className="pb-[5rem] pt-2">
       <picture>
         <source srcSet={HeroImgLarge} media="(min-width: 768px)" />
         <img src={HeroImgSmall} alt="" aria-hidden="true" />
@@ -29,7 +41,7 @@ export default function Hero(props) {
         <Aside data={data.aside} />
       </div>
 
-      <div>cards go here</div>
+      <div className="mt-[4.0625rem] space-y-[2.1875rem]">{cards}</div>
     </section>
   );
 }
