@@ -98,7 +98,10 @@ export default function Hero(props) {
       className="grid-cols-3 gap-7 overflow-hidden pb-[5rem] pt-2 tablet:grid tablet:pt-[3.4375rem]"
       ref={comp}
     >
-      <picture className="col-span-2 block max-h-96 overflow-hidden" ref={pictureEl}>
+      <picture
+        className="col-span-2 block max-h-96 overflow-hidden"
+        ref={pictureEl}
+      >
         <source srcSet={HeroImgLarge} media="(min-width: 768px)" />
         <img
           src={HeroImgSmall}
@@ -108,7 +111,7 @@ export default function Hero(props) {
         />
       </picture>
       <h1
-        className="mt-[1.5625rem] max-w-[31.25rem] text-[2.5rem] font-extrabold leading-none tablet:mt-[0.375rem] tablet:text-[3.5rem]"
+        className="mt-[1.5625rem] max-w-[31.25rem] text-[2.5rem] font-extrabold leading-none text-very-dark-blue tablet:mt-[0.375rem] tablet:text-[3.5rem]"
         ref={headingEl}
       >
         {data.title}
