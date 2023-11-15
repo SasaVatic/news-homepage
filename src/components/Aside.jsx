@@ -1,8 +1,11 @@
 export default function Aside(props) {
   const data = props.data;
 
-  const articles = data.articles.map((article) => (
-    <article className="relative py-[1.9375rem] before:bg-grayish-blue last:pb-0 before:[&:not(:last-child)]:absolute before:[&:not(:last-child)]:bottom-[-0.125rem] before:[&:not(:last-child)]:h-[0.0625rem] before:[&:not(:last-child)]:w-full">
+  const articles = data.articles.map((article, index) => (
+    <article
+      className="relative py-[1.9375rem] before:bg-grayish-blue last:pb-0 before:[&:not(:last-child)]:absolute before:[&:not(:last-child)]:bottom-[-0.125rem] before:[&:not(:last-child)]:h-[0.0625rem] before:[&:not(:last-child)]:w-full"
+      key={index}
+    >
       <a
         href="#"
         className="text-xl font-bold text-off-white transition-colors hover:text-soft-orange"
