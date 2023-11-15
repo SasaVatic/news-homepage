@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Loader from "./components/Loader";
 
 function App() {
   const [pageData, setPageData] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   async function getPageContent() {
     try {
@@ -23,17 +25,21 @@ function App() {
     getPageContent();
   }, []);
 
+  function setLoaded() {
+    setIsLoaded(true);
+  }
+
   return (
     <>
-      {pageData ? (
+      {isLoaded ? (
         <>
           <Header data={pageData.navigation} />
           <main className="mx-auto px-4 desktop:container">
-            <Hero data={pageData.hero}/>
+            <Hero data={pageData.hero} />
           </main>
         </>
       ) : (
-        "Loading..."
+        <Loader setLoadedState={setLoaded} data={pageData} />
       )}
     </>
   );
