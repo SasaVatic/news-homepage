@@ -51,12 +51,12 @@ export default function Navigation(props) {
       <a href="#">
         <img
           src={LogoImg}
-          alt=""
+          alt="Big bold black W letter with dot at the end"
           className="w-[2.875rem] tablet:w-[4.0625rem]"
         />
       </a>
       <ul
-        className="fixed right-0 top-0 h-full w-full max-w-[16.0625rem] translate-x-full space-y-5 bg-linen px-6 pt-[8.875rem] text-lg text-very-dark-blue transition-transform tablet:static tablet:flex tablet:w-auto tablet:max-w-none tablet:translate-x-0 tablet:gap-[2.4375rem] tablet:space-y-0 tablet:px-0 tablet:pt-0 tablet:text-base tablet:text-dark-grayish-blue"
+        className="fixed right-0 top-0 z-10 h-full w-full max-w-[16.0625rem] translate-x-full space-y-5 bg-linen px-6 pt-[8.875rem] text-lg text-very-dark-blue transition-transform tablet:static tablet:flex tablet:w-auto tablet:max-w-none tablet:translate-x-0 tablet:gap-[2.4375rem] tablet:space-y-0 tablet:px-0 tablet:pt-0 tablet:text-base tablet:text-dark-grayish-blue"
         ref={navList}
       >
         {navListItems}
@@ -65,13 +65,13 @@ export default function Navigation(props) {
         <img
           src={IconClosed}
           alt=""
-          className="fixed right-5 top-7 scale-0 transition-transform"
+          className="fixed right-5 top-7 z-20 scale-0 transition-transform "
           ref={imgClosed}
         />
         <img
           src={IconOpen}
           alt=""
-          className="fixed right-4 top-[2.125rem] transition-transform"
+          className="fixed right-4 top-[2.125rem] z-20 transition-transform"
           ref={imgOpen}
         />
       </button>
