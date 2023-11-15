@@ -1,12 +1,30 @@
-export default function Card({ imgURL, title, text, number }) {
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
+
+export default function Card({ imgURL, title, text, number, addAnimation }) {
   let cardNumber = number;
+  const card = useRef(null);
 
   if (number < 10) {
     cardNumber = "0" + number;
   }
 
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const animation = gsap.from(card.current, {
+        x: "50vw",
+        opacity: 0,
+        duration: 0.3,
+        ease: "sine.out",
+      });
+      addAnimation(animation);
+    });
+
+    return () => ctx.revert();
+  }, [addAnimation]);
+
   return (
-    <div className="flex max-w-[21.5625rem] gap-6">
+    <div className="flex max-w-[21.5625rem] gap-6" ref={card}>
       <img
         src={imgURL}
         alt=""

@@ -19,8 +19,8 @@ export default function Aside(props) {
   ));
 
   return (
-    <aside className="bg-very-dark-blue px-[1.3125rem] py-[1.5625rem]">
-      <h2 className="text-[2rem] font-bold leading-none text-soft-orange">
+    <aside className="bg-very-dark-blue px-[1.3125rem] py-[1.5625rem] tablet:py-[2rem] tablet:pl-[1.5625rem] tablet:pr-[1.6875rem]">
+      <h2 className="text-[2rem] font-bold leading-none text-soft-orange tablet:text-[2.5rem]">
         {data.title}
       </h2>
       {articles}
