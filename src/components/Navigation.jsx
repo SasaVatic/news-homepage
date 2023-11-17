@@ -29,8 +29,7 @@ export default function Navigation(props) {
     navList.current.classList.add("translate-x-full");
     imgOpen.current.classList.remove("scale-0");
     imgClosed.current.classList.add("scale-0");
-    overlay.current.classList.add("translate-x-full");
-    overlay.current.classList.add("opacity-0");
+    overlay.current.classList.add("translate-x-full", "opacity-0");
   }
 
   function openMenu() {
@@ -38,8 +37,7 @@ export default function Navigation(props) {
     navList.current.classList.remove("translate-x-full");
     imgOpen.current.classList.add("scale-0");
     imgClosed.current.classList.remove("scale-0");
-    overlay.current.classList.remove("translate-x-full");
-    overlay.current.classList.remove("opacity-0");
+    overlay.current.classList.remove("translate-x-full", "opacity-0");
     gsap.from("li", { xPercent: 100, opacity: 0, stagger: 0.1 });
   }
 
