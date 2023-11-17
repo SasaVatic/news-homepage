@@ -27,6 +27,7 @@ export default function Hero(props) {
           opacity: 0,
           duration: 0.5,
           ease: "sine.out",
+          clearProps: "all",
         },
         ">-0.1",
       )
@@ -37,6 +38,7 @@ export default function Hero(props) {
             opacity: 0,
             duration: 0.5,
             ease: "sine.out",
+            clearProps: "all",
           },
           ">-0.1",
         )
@@ -47,6 +49,7 @@ export default function Hero(props) {
             opacity: 0,
             duration: 0.5,
             ease: "sine.out",
+            clearProps: "all",
           },
           ">-0.1",
         )
@@ -57,6 +60,7 @@ export default function Hero(props) {
             opacity: 0,
             duration: 0.5,
             ease: "sine.out",
+            clearProps: "all",
           },
           ">-0.5",
         )
@@ -67,6 +71,7 @@ export default function Hero(props) {
             opacity: 0,
             duration: 0.5,
             ease: "sine.out",
+            clearProps: "all",
           },
           ">-0.1",
         );
