@@ -10,6 +10,7 @@ export default function Navigation(props) {
   const imgClosed = useRef(null);
   const imgOpen = useRef(null);
   const navElement = useRef(null);
+  const overlay = useRef(null);
 
   const navListItems = props.data.links.map((link, index) => (
     <li key={index}>
@@ -28,6 +29,8 @@ export default function Navigation(props) {
     navList.current.classList.add("translate-x-full");
     imgOpen.current.classList.remove("scale-0");
     imgClosed.current.classList.add("scale-0");
+    overlay.current.classList.add("translate-x-full");
+    overlay.current.classList.add("opacity-0");
   }
 
   function openMenu() {
@@ -35,6 +38,8 @@ export default function Navigation(props) {
     navList.current.classList.remove("translate-x-full");
     imgOpen.current.classList.add("scale-0");
     imgClosed.current.classList.remove("scale-0");
+    overlay.current.classList.remove("translate-x-full");
+    overlay.current.classList.remove("opacity-0");
     gsap.from("li", { xPercent: 100, opacity: 0, stagger: 0.1 });
   }
 
@@ -56,7 +61,7 @@ export default function Navigation(props) {
         />
       </a>
       <ul
-        className="fixed right-0 top-0 z-10 h-full w-full max-w-[16.0625rem] translate-x-full space-y-5 bg-linen px-6 pt-[8.875rem] text-lg text-very-dark-blue transition-transform tablet:static tablet:flex tablet:w-auto tablet:max-w-none tablet:translate-x-0 tablet:gap-[2.4375rem] tablet:space-y-0 tablet:px-0 tablet:pt-0 tablet:text-base tablet:text-dark-grayish-blue"
+        className="fixed right-0 top-0 z-20 h-full w-full max-w-[16.0625rem] translate-x-full space-y-5 bg-linen px-6 pt-[8.875rem] text-lg text-very-dark-blue transition-transform tablet:static tablet:flex tablet:w-auto tablet:max-w-none tablet:translate-x-0 tablet:gap-[2.4375rem] tablet:space-y-0 tablet:px-0 tablet:pt-0 tablet:text-base tablet:text-dark-grayish-blue"
         ref={navList}
       >
         {navListItems}
@@ -65,7 +70,7 @@ export default function Navigation(props) {
         <img
           src={IconClosed}
           alt=""
-          className="fixed right-5 top-7 z-20 scale-0 transition-transform "
+          className="fixed right-5 top-7 z-30 scale-0 transition-transform "
           ref={imgClosed}
         />
         <img
@@ -75,6 +80,10 @@ export default function Navigation(props) {
           ref={imgOpen}
         />
       </button>
+      <div
+        className="fixed left-0 top-0 z-10 h-screen w-screen translate-x-full bg-very-dark-blue bg-opacity-40 opacity-0 transition-opacity [transition:opacity_0.5s]"
+        ref={overlay}
+      ></div>
     </nav>
   );
 }
